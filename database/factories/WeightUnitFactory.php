@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\WeightUnit;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class WeightUnitFactory extends Factory
 {
@@ -15,11 +14,6 @@ class WeightUnitFactory extends Factory
      */
     protected $model = WeightUnit::class;
 
-    #[ArrayShape(
-        [
-            'name' => "string",
-        ]
-    )]
     public function definition(): array
     {
         return [

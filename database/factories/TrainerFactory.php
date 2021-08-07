@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Trainer;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class TrainerFactory extends Factory
 {
@@ -15,11 +14,6 @@ class TrainerFactory extends Factory
      */
     protected $model = Trainer::class;
 
-    #[ArrayShape(
-        [
-            'name' => "string",
-        ]
-    )]
     public function definition(): array
     {
         return [

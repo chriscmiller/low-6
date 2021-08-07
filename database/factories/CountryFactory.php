@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class CountryFactory extends Factory
 {
@@ -15,13 +14,6 @@ class CountryFactory extends Factory
      */
     protected $model = Country::class;
 
-    #[ArrayShape(
-        [
-            'name' => "string",
-            'code' => "string",
-            'abbreviation' => "string",
-        ]
-    )]
     public function definition(): array
     {
         return [

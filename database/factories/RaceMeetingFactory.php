@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\RaceMeeting;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class RaceMeetingFactory extends Factory
 {
@@ -15,12 +14,6 @@ class RaceMeetingFactory extends Factory
      */
     protected $model = RaceMeeting::class;
 
-    #[ArrayShape(
-        [
-            'racecourse_id' => "int",
-            'meeting_date' => "\DateTime",
-        ]
-    )]
     public function definition(): array
     {
         return [

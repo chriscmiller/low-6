@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Jockey;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class JockeyFactory extends Factory
 {
@@ -15,11 +14,6 @@ class JockeyFactory extends Factory
      */
     protected $model = Jockey::class;
 
-    #[ArrayShape(
-        [
-            'name' => "string",
-        ]
-    )]
     public function definition(): array
     {
         return [
