@@ -186,6 +186,13 @@ PA Horse feed
 ## Time Breakdown For Test
 
 1. Setting up the initial Laravel install, standards packages, docker configuration, and readme - 1 Hour
+2. Setting up the database migrations and models - 1 hour
+
+## Assumptions made from data provided
+
+The XML feed provided does not give a valid breakdown of the full schema for the API, as such I have assumed that
+* bred in the Horse refers to a country
+* IRE does not follow a standard, and is likely to refer to an ENUM from the API itself, as such I have created a field for the abbreviation in the countries table, and seeded the perceived value for Ireland
 
 ## Project Setup
 
@@ -235,12 +242,12 @@ You will now need to execute a small set of commands to get this up and running
 docker exec -it php bash
 composer install
 php artisan key:generate
-php artisan migrate:fresh
+php artisan migrate:fresh --seed
 ```
 
 ### Accessing The Application
 
-You should now have access to the application in your browser.  Visit [https://localhost](https://localhost).  You will get a certification error, for this application it is safe to ignore this.
+This application is designed to be an API for feedback from the data stored, and as such has no front end
 
 ## Technical Stack Used
 
