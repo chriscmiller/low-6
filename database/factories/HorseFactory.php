@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Horse;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class HorseFactory extends Factory
 {
@@ -15,12 +14,6 @@ class HorseFactory extends Factory
      */
     protected $model = Horse::class;
 
-    #[ArrayShape(
-        [
-            'name' => "string",
-            'bred_country_id' => "int",
-        ]
-    )]
     public function definition(): array
     {
         return [
