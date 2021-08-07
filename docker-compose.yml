@@ -1,0 +1,57 @@
+version: '3'
+services:
+    nginx:
+        container_name: nginx
+        build: ./docker/nginx
+        depends_on:
+            - php
+        volumes:
+            - ./:/var/www/vhost/:cached
+        working_dir: /var/www/vhost/
+        ports:
+            - '80:80'
+            - '443:443'
+        networks:
+            - docker_network
+    php:
+        container_name: php
+        build: ./docker/php
+        environment:
+            PHP_MEMORY_LIMIT: '512M'
+            COMPOSER_MEMORY_LIMIT: '-1'
+        volumes:
+            - ./:/var/www/vhost/:cached
+        working_dir: /var/www/vhost/
+        ports:
+            - '9000:9000'
+        networks:
+            - docker_network
+    mysql:
+        container_name: mysql
+        image: mysql:5.7.16
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql:cached
+            - ./docker/mysql/init:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: low6
+            MYSQL_USER: low6_user
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_HOST: '%'
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        networks:
+            - docker_network
+        ports:
+            - 4406:3306
+    redis:
+        container_name: redis
+        build: ./docker/redis
+        volumes:
+            - ./docker/redis/data:/data
+        ports:
+            - '6390:6379'
+        networks:
+            - docker_network
+networks:
+    docker_network:
+        driver: bridge
